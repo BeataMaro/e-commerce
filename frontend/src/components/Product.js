@@ -11,11 +11,11 @@ const StyledCard = styled(Card)`
 const Product = ({ product }) => {
   return (
     <StyledCard className='rounded p-3 my-2' key={product._id}>
-      <Link to={`/products/${product._id}`}>
+      <Link to={`/product/${product._id}`}>
         <Card.Img src={product.image} variant='top' alt={product.name} />
       </Link>
       <Card.Body>
-        <Link to={`/products/${product._id}`}>
+        <Link to={`/product/${product._id}`}>
           <Card.Title as='div'>{product.name}</Card.Title>
         </Link>
         <Card.Text as='div'>

@@ -1,5 +1,9 @@
 @import url(d:\e-shop\e-commerce\frontend\src\bootstrap.min.css);
-main {
+body h1 {
+  color: royalblue;
+}
+
+body main {
   min-height: 80vh;
   background-color: var(--bs-pink);
 }

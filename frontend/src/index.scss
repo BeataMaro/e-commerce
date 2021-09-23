@@ -2,7 +2,13 @@
 
 $blue: royalblue;
 
-main {
-  min-height: 80vh;
-  background-color: var(--bs-pink);
+body {
+  h1 {
+    color: $blue;
+  }
+
+  main {
+    min-height: 80vh;
+    background-color: var(--bs-pink);
+  }
 }

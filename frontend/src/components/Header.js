@@ -1,5 +1,8 @@
 import React from "react";
+import { LinkContainer } from "react-router-bootstrap";
 import { Container, Navbar, Nav } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
@@ -7,12 +10,24 @@ const Header = () => {
       <h1>Przebrała się miarka</h1>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
-          <Navbar.Brand href='/'>Przebrała się miarka</Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand>Przebrała się miarka</Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <Nav.Link href='/cart'>Koszyk</Nav.Link>
-              <Nav.Link href='/login'>Konto</Nav.Link>
+              <LinkContainer to='/cart'>
+                <Nav.Link>
+                  <FontAwesomeIcon icon={faShoppingCart} className='me-1' />
+                  Koszyk
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/login'>
+                <Nav.Link>
+                  <FontAwesomeIcon icon={faUser} className='me-1' />
+                  Konto
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>

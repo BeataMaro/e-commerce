@@ -1,25 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
 import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <main>
+      <main className='py-3 justify-content-center'>
         <Container>
-          <Row>
-            <Col className='text-center py-3'>
-              <h2>Main</h2>
-            </Col>
-          </Row>
-          <Row className='justify-content-center'>
-            <HomeScreen />
-          </Row>
+          <Switch>
+            <Route path='/' exact component={HomeScreen} />
+            <Route path='/product/:id' component={ProductScreen} />
+          </Switch>
         </Container>
       </main>
       <Footer />
