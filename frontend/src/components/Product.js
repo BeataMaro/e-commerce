@@ -1,13 +1,18 @@
 import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 
+const StyledCard = styled(Card)`
+  background-color: hsl(180, 20%, 60%);
+`;
+
 const Product = ({ product }) => {
   return (
-    <Card className='rounded p-3 my-2' key={product._id}>
+    <StyledCard className='rounded p-3 my-2' key={product._id}>
       <Link to={`/products/${product._id}`}>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img src={product.image} variant='top' alt={product.name} />
       </Link>
       <Card.Body>
         <Link to={`/products/${product._id}`}>
@@ -18,7 +23,7 @@ const Product = ({ product }) => {
         </Card.Text>
         <Card.Text as='h4'> ${product.price}</Card.Text>
       </Card.Body>
-    </Card>
+    </StyledCard>
   );
 };
 

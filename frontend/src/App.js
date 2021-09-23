@@ -17,7 +17,7 @@ const App = () => {
               <h2>Main</h2>
             </Col>
           </Row>
-          <Row>
+          <Row className='justify-content-center'>
             <HomeScreen />
           </Row>
         </Container>
