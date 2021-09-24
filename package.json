@@ -1,0 +1,37 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "MERN e-commerce ",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeataMaro/e-commerce.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "react",
+    "shop",
+    "portfolio"
+  ],
+  "author": "Beata Maro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BeataMaro/e-commerce/issues"
+  },
+  "homepage": "https://github.com/BeataMaro/e-commerce#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.13"
+  }
+}
