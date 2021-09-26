@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -12,10 +12,7 @@ import {
   Button,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-
-//actions
-
-import { listProductsDetails } from "../actions/productActions";
+// import products from "../products";
 
 const StyledListGroupItem = styled(ListGroupItem)`
   background-color: white;
@@ -23,14 +20,18 @@ const StyledListGroupItem = styled(ListGroupItem)`
 `;
 
 const ProductScreen = ({ match }) => {
-  const dispatch = useDispatch();
-
-  const productDetails = useSelector((state) => state.productDetails);
-  const { loading, error, product } = productDetails;
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
-    dispatch(listProductsDetails(match.params.id));
-  }, [dispatch, match]);
+    const fetchProduct = async () => {
+      //res.data
+      const { data } = await axios.get(`/api/products/${match.params.id}`); //proxy we frontend/package.json określa localhost na 8000 a nie 3000
+
+      // const product = await data.find((item) => item._id === match.params.id);
+      setProduct(data);
+    };
+    fetchProduct();
+  }, [match]); //dependency
 
   return (
     <>
