@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -10,19 +10,23 @@ import {
   ListGroupItem,
   Card,
   Button,
+  Form,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 
 //actions
 
 import { listProductsDetails } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
 
 const StyledListGroupItem = styled(ListGroupItem)`
   background-color: white;
   color: ${({ theme }) => theme.colors.main};
 `;
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ match, history }) => {
+  const [qty, setQty] = useState(1);
+
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -31,6 +35,10 @@ const ProductScreen = ({ match }) => {
   useEffect(() => {
     dispatch(listProductsDetails(match.params.id));
   }, [dispatch, match]);
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
 
   return (
     <>
@@ -73,9 +81,32 @@ const ProductScreen = ({ match }) => {
                   </Col>
                 </Row>
               </StyledListGroupItem>
+              {product.countInStock > 0 && (
+                <StyledListGroupItem>
+                  <Row>
+                    <Col>Ilość</Col>
+                    <Col>
+                      <Form.Select
+                        value={qty}
+                        onChange={(e) => setQty(e.target.value)}
+                      >
+                        {[...Array(product.countInStock).keys()].map((q) => (
+                          <option key={q + 1} value={q + 1}>
+                            {q + 1}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Col>
+                  </Row>
+                </StyledListGroupItem>
+              )}
               <StyledListGroupItem>
                 <Row className='d-grid'>
-                  <Button type='button' disabled={product.countInStock === 0}>
+                  <Button
+                    type='button'
+                    onClick={addToCartHandler}
+                    disabled={product.countInStock === 0}
+                  >
                     Dodaj do koszyka
                   </Button>
                 </Row>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,8 +19,10 @@ const Header = () => {
             <Nav className='ms-auto'>
               <LinkContainer to='/cart'>
                 <Nav.Link>
-                  <FontAwesomeIcon icon={faShoppingCart} className='me-1' />
-                  Koszyk
+                  <Link to='/cart'>
+                    <FontAwesomeIcon icon={faShoppingCart} className='me-1' />
+                    Koszyk
+                  </Link>
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to='/login'>
