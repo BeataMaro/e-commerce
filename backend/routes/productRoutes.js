@@ -9,7 +9,16 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const products = await Product.find({}); // pobierz wszystkie produkty. Returns promise
+    const keyword = req.query.keyword
+      ? {
+          name: {
+            $regex: req.query.keyword,
+            // case insensitive
+            $options: "i",
+          },
+        }
+      : {};
+    const products = await Product.find({ ...keyword }); // pobierz wszystkie produkty lub te pasujące do keyword jeśli jest. Returns promise
     // res.status(404);
     // throw new Error("O nie!");
     res.json(products);

@@ -5,7 +5,9 @@ import { Card } from "react-bootstrap";
 import Rating from "./Rating";
 
 const StyledCard = styled(Card)`
-  background-color: hsl(180, 20%, 60%);
+  background-color: #ded6d9;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
 `;
 
 const Product = ({ product }) => {

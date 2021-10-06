@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Container } from "react-bootstrap";
 import theme from "./theme";
-import Header from "./components/Header";
 import HomeScreen from "./screens/HomeScreen";
+import BlogScreen from "./screens/BlogScreen";
+import ShopScreen from "./screens/ShopScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import Footer from "./components/Footer";
@@ -13,16 +14,16 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Header />
         <main className='py-3 justify-content-center'>
-          <Container>
-            <Switch>
-              <Route path='/' exact component={HomeScreen} />
-              <Route path='/product/:id' component={ProductScreen} />
-              {/* id is optional */}
-              <Route path='/cart/:id?' component={CartScreen} />
-            </Switch>
-          </Container>
+          <Switch>
+            <Route path='/' exact component={BlogScreen} />
+            {/* <Route path='/search/:keyword' component={HomeScreen} /> */}
+            <Route path='/shop' component={ShopScreen} />
+            <Route path='/search/:keyword' component={ShopScreen} />
+            <Route path='/product/:id' component={ProductScreen} />
+            {/* id is optional */}
+            <Route path='/cart/:id?' component={CartScreen} />
+          </Switch>
         </main>
         <Footer />
       </Router>

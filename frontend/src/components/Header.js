@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faRedhat } from "@fortawesome/free-brands-svg-icons";
 
-const Header = () => {
+import SearchBox from "./SearchBox";
+
+const Header = ({ shop }) => {
   return (
     <header>
-      <h1>Przebrała się miarka</h1>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg='light' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>Przebrała się miarka</Navbar.Brand>
@@ -17,20 +19,41 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-              <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <Link to='/cart'>
+              <Route
+                render={({ history }) => <SearchBox history={history} />}
+              />
+              {shop && (
+                <>
+                  <LinkContainer to='/cart'>
+                    <Nav.Link>
+                      <Link to='/cart'>
+                        <FontAwesomeIcon
+                          icon={faShoppingCart}
+                          className='me-1'
+                        />
+                        Koszyk
+                      </Link>
+                    </Nav.Link>
+                  </LinkContainer>
+
+                  <LinkContainer to='/'>
+                    <Nav.Link>
+                      <FontAwesomeIcon icon={faRedhat} className='me-1' />
+                      Blog
+                    </Nav.Link>
+                  </LinkContainer>
+                </>
+              )}
+
+              {!shop && (
+                <LinkContainer to='/shop'>
+                  <Nav.Link>
+                    {" "}
                     <FontAwesomeIcon icon={faShoppingCart} className='me-1' />
-                    Koszyk
-                  </Link>
-                </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/login'>
-                <Nav.Link>
-                  <FontAwesomeIcon icon={faUser} className='me-1' />
-                  Konto
-                </Nav.Link>
-              </LinkContainer>
+                    Sklep
+                  </Nav.Link>
+                </LinkContainer>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

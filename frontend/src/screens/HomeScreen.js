@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 //actions
 import { listProducts } from "../actions/productActions";
@@ -10,21 +10,19 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+  const keyword = match.params.keyword;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
   const { loading, products, error } = productList;
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]);
 
   return (
-    <>
-      <Col className='text-center'>
-        <h2>Ostatnio ogladane</h2>
-      </Col>
+    <Container>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -38,7 +36,7 @@ const HomeScreen = () => {
           ))}
         </Row>
       )}
-    </>
+    </Container>
   );
 };
 

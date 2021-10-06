@@ -54,7 +54,7 @@ const ProductScreen = ({ match }) => {
               />
             </ListGroupItem>
             <ListGroupItem>{product.price}zł</ListGroupItem>
-            <ListGroupItem>Opis produktu: ${product.description}</ListGroupItem>
+            <ListGroupItem>Opis produktu: {product.description}</ListGroupItem>
           </ListGroup>
         </Col>
         <Col md={3}>
