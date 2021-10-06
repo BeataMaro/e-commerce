@@ -24,6 +24,12 @@ const Header = ({ shop }) => {
               />
               {shop && (
                 <>
+                  <LinkContainer to='/'>
+                    <Nav.Link>
+                      <FontAwesomeIcon icon={faRedhat} className='me-1' />
+                      Blog
+                    </Nav.Link>
+                  </LinkContainer>
                   <LinkContainer to='/cart'>
                     <Nav.Link>
                       <Link to='/cart'>
@@ -33,13 +39,6 @@ const Header = ({ shop }) => {
                         />
                         Koszyk
                       </Link>
-                    </Nav.Link>
-                  </LinkContainer>
-
-                  <LinkContainer to='/'>
-                    <Nav.Link>
-                      <FontAwesomeIcon icon={faRedhat} className='me-1' />
-                      Blog
                     </Nav.Link>
                   </LinkContainer>
                 </>

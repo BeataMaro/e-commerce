@@ -12,7 +12,7 @@ const SearchBox = ({ history }) => {
     keyword.trim() ? history.push(`/search/${keyword}`) : history.push("/");
   };
   return (
-    <Form onSubmit={submitHandler} className='d-flex m-3'>
+    <Form onSubmit={submitHandler} className='d-flex m-3 m-lg-0'>
       <Form.Control
         type='text'
         name='search'
