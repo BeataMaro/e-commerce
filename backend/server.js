@@ -32,7 +32,7 @@ dotenv.config();
 
 connectDB();
 
-app.use("/api/shop", productRoutes);
+app.use("/api/products", productRoutes);
 
 //Error middleware
 

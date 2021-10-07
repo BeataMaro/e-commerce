@@ -15,7 +15,7 @@ export const listProducts =
       dispatch({ type: PRODUCT_LIST_REQUEST });
       //res.data
       // const { data } = await axios.get(`/api/products?keyword=${keyword}`);
-      const { data } = await axios.get(`/api/shop?keyword=${keyword}`);
+      const { data } = await axios.get(`/api/products?keyword=${keyword}`);
       dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
     } catch (err) {
       dispatch({
@@ -30,7 +30,7 @@ export const listProductsDetails = (id) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
     //res.data
     // const { data } = await axios.get(`/api/products/${id}`);
-    const { data } = await axios.get(`/api/shop/${id}`);
+    const { data } = await axios.get(`/api/products/${id}`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (err) {
     dispatch({

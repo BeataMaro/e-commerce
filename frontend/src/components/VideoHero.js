@@ -48,7 +48,7 @@ const StyledHeroText = styled.article`
 const VideoHero = () => {
   return (
     <StyledVideo>
-      <video muted loop autoplay='autoplay'>
+      <video muted loop autoPlay='autoplay'>
         <source
           src='/pexels-pavel-danilyuk-6459917.mp4'
           type='video/mp4'
