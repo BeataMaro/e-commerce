@@ -10,7 +10,9 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       //res.data
-      const { data } = await axios.get("/api/products"); //proxy we frontend/package.json określa localhost na 8000 a nie 3000
+      const { data } = await axios.get("/api/shop");
+      // const { data } = await axios.get("/api/products");
+      //proxy we frontend/package.json określa localhost na 8000 a nie 3000
       setProducts(data);
     };
     fetchProducts();
