@@ -58,7 +58,7 @@ const VideoHero = () => {
       <StyledHeroText>
         <h1 className='text-center'>Krawiectwo na miare Twoich potrzeb</h1>
         <Link to='/about'>
-          <h3 className='text-center text-muted'>Kim jesteśmy?</h3>
+          <h3 className='text-center text-muted'>Poznajmy się...</h3>
         </Link>
       </StyledHeroText>
     </StyledVideo>
